@@ -1,0 +1,127 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint & type-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --group dev
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run mypy
+      - name: Playground bundle is up to date
+        run: uv run python scripts/build_playground.py --check
+      - name: Dogfood — our own docs are clean
+        run: uv run paknevis check README.md CHANGELOG.md CONTRIBUTING.md SECURITY.md
+
+  test:
+    name: Test (Python ${{ matrix.python }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python: ["3.10", "3.11", "3.12", "3.13"]
+        include:
+          - os: windows-latest
+            python: "3.12"
+          - os: macos-latest
+            python: "3.12"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - run: uv sync --group dev
+      - run: uv run pytest --cov=paknevis --cov-report=term --cov-report=xml
+      - name: Coverage summary
+        if: matrix.os == 'ubuntu-latest' && matrix.python == '3.12'
+        run: uv run coverage report --fail-under=90
+
+  package:
+    name: Build sdist & wheel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv build
+      - run: uvx twine check --strict dist/*
+      - name: Smoke-test the wheel in a clean environment
+        run: |
+          uv venv /tmp/smoke
+          uv pip install --python /tmp/smoke dist/*.whl
+          echo "كتاب هاي من" | /tmp/smoke/bin/paknevis fix - | grep -q "کتاب‌های من"
+          /tmp/smoke/bin/paknevis --version
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  action:
+    name: GitHub Action & pre-commit hook
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Action passes on clean text
+        uses: ./
+        with:
+          paths: tests/fixtures/clean.in.md tests/fixtures/*.out.txt
+      - name: Action fails on messy text
+        id: messy
+        continue-on-error: true
+        uses: ./
+        with:
+          paths: tests/fixtures/zwnj.in.txt
+      - name: Expect failure on messy text
+        if: steps.messy.outcome != 'failure'
+        run: |
+          echo "::error::the action should fail on tests/fixtures/zwnj.in.txt"
+          exit 1
+      - name: Action fix mode
+        uses: ./
+        with:
+          command: fix
+          paths: tests/fixtures/punctuation.in.txt
+      - name: Fixed file matches expected output
+        run: diff tests/fixtures/punctuation.in.txt tests/fixtures/punctuation.out.txt
+      - name: pre-commit hook definition works
+        run: |
+          git checkout -- tests/fixtures
+          pipx run pre-commit try-repo . paknevis-check --files tests/fixtures/clean.in.md tests/fixtures/zwnj.out.txt
+
+  playground:
+    name: Playground end-to-end (headless Chromium)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/e2e_playground.py --shots shots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playground-screenshots
+          path: shots/
+          if-no-files-found: ignore

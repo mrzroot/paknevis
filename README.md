@@ -9,6 +9,7 @@
 Prettier/ESLint for Persian writing: ZWNJ, Arabic characters, punctuation, digits and common misspellings —
 safe for Markdown, HTML and LaTeX (XePersian).
 
+[![CI](https://github.com/mrzroot/paknevis/actions/workflows/ci.yml/badge.svg)](https://github.com/mrzroot/paknevis/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-teal.svg)](LICENSE)
 [![Python 3.10–3.13](https://img.shields.io/badge/python-3.10%20%E2%80%93%203.13-blue.svg)](pyproject.toml)
 [![Playground](https://img.shields.io/badge/playground-try%20in%20browser-0f766e.svg)](https://mrzroot.github.io/paknevis/)
