@@ -1,0 +1,53 @@
+# Adverbs that take tanvin (ـاً). Each entry is the form *without* tanvin;
+# the `tanvin` rule suggests appending «ً» (U+064B). Only words that are
+# unambiguous without the mark belong here (e.g. «جدا» is excluded because
+# «جدا» and «جداً» are different words).
+- اتفاقا
+- احتمالا
+- اخیرا
+- اساسا
+- اصلا
+- اصولا
+- اکیدا
+- اولا
+- ثانیا
+- ثالثا
+- بعدا
+- بعضا
+- تدریجا
+- تقریبا
+- تماما
+- حتما
+- حقیقتا
+- خصوصا
+- دائما
+- دقیقا
+- رسما
+- شخصا
+- شدیدا
+- صرفا
+- ضمنا
+- طبیعتا
+- ظاهرا
+- عمدا
+- عمدتا
+- عملا
+- عموما
+- غالبا
+- فعلا
+- فورا
+- قبلا
+- قطعا
+- کاملا
+- کلا
+- لطفا
+- مثلا
+- مجددا
+- مخصوصا
+- مستقیما
+- مطمئنا
+- معمولا
+- موقتا
+- نسبتا
+- نهایتا
+- واقعا

@@ -1,0 +1,33 @@
+name: 🐛 Bug report
+description: Something crashes or behaves incorrectly (not a rule false positive).
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! For a rule that changes correct text, use the **False positive** template instead.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened? / چه اتفاقی افتاد؟
+      description: Include the command you ran and the full output or traceback.
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Minimal input / متن نمونه
+      description: The smallest text or file that reproduces the problem.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: paknevis version
+      placeholder: "output of `paknevis --version`"
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Python version and OS
+      placeholder: "Python 3.12, Ubuntu 24.04"

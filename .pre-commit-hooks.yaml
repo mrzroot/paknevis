@@ -1,0 +1,14 @@
+- id: paknevis
+  name: paknevis (fix Persian text)
+  description: Fix Persian text — ZWNJ, Arabic characters, punctuation, digits and spacing — in Markdown, HTML, LaTeX and text files.
+  entry: paknevis fix
+  language: python
+  files: \.(md|markdown|mdx|txt|html?|tex)$
+  types: [text]
+- id: paknevis-check
+  name: paknevis (check Persian text)
+  description: Report Persian text issues without modifying files.
+  entry: paknevis check
+  language: python
+  files: \.(md|markdown|mdx|txt|html?|tex)$
+  types: [text]

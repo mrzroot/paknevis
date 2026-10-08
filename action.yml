@@ -1,0 +1,54 @@
+name: "paknevis — Persian text linter"
+description: "Lint or fix Persian text (ZWNJ, Arabic characters, punctuation, digits) in Markdown, HTML, LaTeX and text files."
+author: "Mohammadreza Zare"
+branding:
+  icon: "check-circle"
+  color: "green"
+
+inputs:
+  paths:
+    description: "Space-separated files, directories or globs to process."
+    required: false
+    default: "."
+  command:
+    description: "'check' (report, annotate the PR) or 'fix' (rewrite files)."
+    required: false
+    default: "check"
+  args:
+    description: "Extra CLI arguments, e.g. '--fail-on error --disable kashida'."
+    required: false
+    default: ""
+  python-version:
+    description: "Python version used to run paknevis."
+    required: false
+    default: "3.12"
+  setup-python:
+    description: "Set to 'false' to use the Python already on the runner."
+    required: false
+    default: "true"
+
+runs:
+  using: "composite"
+  steps:
+    - if: inputs.setup-python == 'true'
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ inputs.python-version }}
+    - name: Install paknevis
+      shell: bash
+      run: python -m pip install --disable-pip-version-check --quiet "${GITHUB_ACTION_PATH}"
+    - name: Run paknevis
+      shell: bash
+      env:
+        PAKNEVIS_COMMAND: ${{ inputs.command }}
+        PAKNEVIS_PATHS: ${{ inputs.paths }}
+        PAKNEVIS_ARGS: ${{ inputs.args }}
+      run: |
+        case "$PAKNEVIS_COMMAND" in
+          check) format="--format github" ;;
+          fix) format="" ;;
+          *) echo "::error::unknown command '$PAKNEVIS_COMMAND' (expected check or fix)"; exit 2 ;;
+        esac
+        # Word splitting of paths/args is intentional.
+        # shellcheck disable=SC2086
+        python -m paknevis "$PAKNEVIS_COMMAND" $format $PAKNEVIS_ARGS $PAKNEVIS_PATHS

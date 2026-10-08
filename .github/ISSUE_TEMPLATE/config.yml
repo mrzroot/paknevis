@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 🧪 Try it in the playground
+    url: https://mrzroot.github.io/paknevis/
+    about: Reproduce issues in the browser and share the link (the text is stored in the URL).
+  - name: 🔒 Report a security vulnerability
+    url: https://github.com/mrzroot/paknevis/security/advisories/new
+    about: Please report security issues privately.

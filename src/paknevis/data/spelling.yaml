@@ -1,0 +1,93 @@
+# Curated dictionary of common Persian misspellings.
+#
+# Each entry maps a *wrong* form to the *right* form. Entries are matched as
+# whole words (a following ZWNJ suffix such as «‌ها» is allowed), so keep them
+# unambiguous: if a "wrong" form is also a valid word in some context, it does
+# not belong here. Sources: دستور خط فارسی (Academy of Persian Language and
+# Literature) and common usage in technical writing.
+#
+# To extend paknevis with your own words, see CONTRIBUTING.md or use the
+# `dictionaries` / `[tool.paknevis.spelling]` options.
+
+# --- ت/ط, ز/ذ/ض/ظ, غ/ق confusions --------------------------------------------
+- {wrong: اطاق, right: اتاق, note: Standard spelling uses ت.}
+- {wrong: باطری, right: باتری, note: Loanword (battery) is written with ت.}
+- {wrong: بلیط, right: بلیت, note: Loanword (billet) is written with ت.}
+- {wrong: طپش, right: تپش}
+- {wrong: امپراطور, right: امپراتور}
+- {wrong: امپراطوری, right: امپراتوری}
+- {wrong: باطلاق, right: باتلاق}
+- {wrong: غلطیدن, right: غلتیدن}
+- {wrong: ذغال, right: زغال}
+- {wrong: ضمینه, right: زمینه}
+- {wrong: حاظر, right: حاضر}
+- {wrong: اظطراب, right: اضطراب}
+- {wrong: انظباط, right: انضباط}
+- {wrong: قذا, right: غذا}
+
+# --- گذاشتن vs گزاردن ----------------------------------------------------------
+- {wrong: سپاسگذار, right: سپاسگزار, note: From گزاردن (to perform), not گذاشتن.}
+- {wrong: سپاسگذاری, right: سپاسگزاری}
+- {wrong: سپاسگذارم, right: سپاسگزارم}
+- {wrong: سپاسگذاریم, right: سپاسگزاریم}
+- {wrong: شکرگذار, right: شکرگزار}
+- {wrong: خدمتگذار, right: خدمتگزار}
+- {wrong: برگذار, right: برگزار}
+- {wrong: برگذاری, right: برگزاری}
+- {wrong: گذارش, right: گزارش}
+- {wrong: گذارشگر, right: گزارشگر}
+
+# --- خواستن vs خاستن -----------------------------------------------------------
+- {wrong: خواستگاه, right: خاستگاه, note: From خاستن (to rise), not خواستن.}
+- {wrong: برخواست, right: برخاست}
+- {wrong: برخواستن, right: برخاستن}
+
+# --- Loanwords and numbers -------------------------------------------------------
+- {wrong: ملیون, right: میلیون}
+- {wrong: ملیارد, right: میلیارد}
+- {wrong: هیجده, right: هجده}
+- {wrong: تآتر, right: تئاتر}
+
+# --- ئ vs ی (Academy recommends ی) -----------------------------------------------
+- {wrong: پائین, right: پایین}
+- {wrong: پائیز, right: پاییز}
+- {wrong: آئین, right: آیین}
+- {wrong: آئینه, right: آینه}
+
+# --- Compound words that take a ZWNJ ---------------------------------------------
+- {wrong: نرم افزار, right: نرم‌افزار}
+- {wrong: سخت افزار, right: سخت‌افزار}
+- {wrong: وب سایت, right: وب‌سایت}
+- {wrong: وبسایت, right: وب‌سایت}
+- {wrong: پیاده سازی, right: پیاده‌سازی}
+- {wrong: بهینه سازی, right: بهینه‌سازی}
+- {wrong: به روز رسانی, right: به‌روزرسانی}
+- {wrong: بروزرسانی, right: به‌روزرسانی}
+- {wrong: بروز رسانی, right: به‌روزرسانی}
+- {wrong: پیش فرض, right: پیش‌فرض}
+- {wrong: پیش نیاز, right: پیش‌نیاز}
+- {wrong: پس زمینه, right: پس‌زمینه}
+- {wrong: علاقه مند, right: علاقه‌مند}
+- {wrong: دانش آموز, right: دانش‌آموز}
+- {wrong: پایان نامه, right: پایان‌نامه}
+- {wrong: برنامه نویس, right: برنامه‌نویس}
+- {wrong: برنامه نویسی, right: برنامه‌نویسی}
+- {wrong: هیچکدام, right: هیچ‌کدام}
+- {wrong: هیچکس, right: هیچ‌کس}
+- {wrong: هیچوقت, right: هیچ‌وقت}
+- {wrong: اینطور, right: این‌طور}
+- {wrong: آنطور, right: آن‌طور}
+- {wrong: همینطور, right: همین‌طور}
+- {wrong: همانطور, right: همان‌طور}
+- {wrong: پیش پردازش, right: پیش‌پردازش}
+- {wrong: پیشپردازش, right: پیش‌پردازش}
+
+# --- Preposition «به» written attached -------------------------------------------
+- {wrong: بخاطر, right: به‌خاطر, note: The preposition به is written separately.}
+- {wrong: بعنوان, right: به‌عنوان}
+- {wrong: بطور, right: به‌طور}
+- {wrong: بویژه, right: به‌ویژه}
+- {wrong: بهمراه, right: به‌همراه}
+- {wrong: بسوی, right: به‌سوی}
+- {wrong: بزودی, right: به‌زودی}
+- {wrong: بدست, right: به‌دست}

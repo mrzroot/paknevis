@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>پاک‌نویس — Persian text linter &amp; auto-fixer · Playground</title>
+  <meta name="description" content="پاک‌نویس (paknevis): Prettier/ESLint for Persian writing. Fix ZWNJ, Arabic characters, punctuation and digits — Markdown, HTML and LaTeX aware. Runs the real Python package in your browser.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0f766e">
+  <meta property="og:title" content="پاک‌نویس · paknevis playground">
+  <meta property="og:description" content="Persian text linter and auto-fixer — try it in your browser.">
+  <meta property="og:image" content="https://mrzroot.github.io/paknevis/assets/screenshot.png">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/Vazirmatn-wght.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+</head>
+<body>
+  <a class="skip" href="#input" data-i18n="skip">پرش به ویرایشگر</a>
+  <header class="topbar">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#14b8a6"/><stop offset="1" stop-color="#0f766e"/></linearGradient></defs>
+        <rect width="64" height="64" rx="16" fill="url(#lg)"/>
+        <path d="M18 34c4 6 10 9 16 9 7 0 12-4 12-10 0-5-4-8-9-8h-3" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="27" cy="51" r="3.2" fill="#fff"/><circle cx="35" cy="51" r="3.2" fill="#fff"/><circle cx="31" cy="57" r="3.2" fill="#fff"/>
+        <path d="M40 15l4 4 8-9" fill="none" stroke="#a7f3d0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <h1><span class="fa-name">پاک‌نویس</span> <span class="en-name" lang="en" dir="ltr">paknevis</span></h1>
+        <p class="tagline" data-i18n="tagline">ویراستار خودکار متن فارسی — مثل Prettier و ESLint، برای نوشتار فارسی</p>
+      </div>
+    </div>
+    <nav class="actions">
+      <button id="lang-toggle" class="ghost" type="button" aria-label="Switch language">English</button>
+      <a class="ghost" href="https://github.com/mrzroot/paknevis#readme" data-i18n="docs">مستندات</a>
+      <a class="ghost github" href="https://github.com/mrzroot/paknevis" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Options">
+      <div class="status" id="status" data-state="idle" role="status" aria-live="polite">
+        <span class="dot"></span><span id="status-text" data-i18n="status.idle">در انتظار بارگذاری موتور…</span>
+      </div>
+      <label class="field"><span data-i18n="opt.syntax">قالب</span>
+        <select id="opt-syntax">
+          <option value="plain" data-i18n="syntax.plain">متن ساده</option>
+          <option value="markdown">Markdown</option>
+          <option value="html">HTML</option>
+          <option value="latex">LaTeX / XePersian</option>
+        </select>
+      </label>
+      <label class="field"><span data-i18n="opt.digits">رقم‌ها</span>
+        <select id="opt-digits">
+          <option value="persian" data-i18n="digits.persian">فارسی ۱۲۳</option>
+          <option value="latin" data-i18n="digits.latin">لاتین 123</option>
+          <option value="keep" data-i18n="digits.keep">دست نزن</option>
+        </select>
+      </label>
+      <label class="field"><span data-i18n="opt.ezafe">کسرهٔ اضافه</span>
+        <select id="opt-ezafe">
+          <option value="zwnj">خانه‌ی</option>
+          <option value="hamza">خانهٔ</option>
+        </select>
+      </label>
+      <label class="switch"><input type="checkbox" id="opt-invisibles" checked><span data-i18n="opt.invisibles">نمایش نیم‌فاصله</span></label>
+      <button class="ghost" id="rules-toggle" type="button" aria-expanded="false" aria-controls="rules-panel"><span data-i18n="opt.rules">قاعده‌ها</span> <span class="count" id="rules-count"></span></button>
+    </section>
+
+    <section id="rules-panel" class="rules-panel" hidden aria-label="Rules"></section>
+
+    <section class="samples" aria-label="Samples">
+      <span data-i18n="samples">نمونه‌ها:</span>
+      <button type="button" class="chip" data-sample="blog" data-i18n="sample.blog">نوشتهٔ وبلاگ</button>
+      <button type="button" class="chip" data-sample="markdown" data-i18n="sample.markdown">README مارک‌داون</button>
+      <button type="button" class="chip" data-sample="latex" data-i18n="sample.latex">پایان‌نامهٔ LaTeX</button>
+      <button type="button" class="chip" data-sample="html" data-i18n="sample.html">صفحهٔ HTML</button>
+      <button type="button" class="chip" data-sample="clear" data-i18n="sample.clear">پاک کردن</button>
+    </section>
+
+    <section class="workspace">
+      <div class="pane">
+        <div class="pane-head">
+          <label for="input" data-i18n="input">متن ورودی</label>
+          <span class="meta" id="input-meta"></span>
+        </div>
+        <textarea id="input" dir="rtl" spellcheck="false" autocomplete="off" autocapitalize="off"
+          placeholder="متن فارسی خود را این‌جا بنویسید یا جای‌گذاری کنید…" data-i18n-placeholder="placeholder"></textarea>
+      </div>
+
+      <div class="pane">
+        <div class="pane-head tabs" role="tablist">
+          <button role="tab" id="tab-issues" aria-selected="true" aria-controls="view-issues" data-i18n="tab.issues">مشکلات</button>
+          <button role="tab" id="tab-fixed" aria-selected="false" aria-controls="view-fixed" data-i18n="tab.fixed">متن اصلاح‌شده</button>
+          <span class="badge" id="issue-count">0</span>
+          <span class="spacer"></span>
+          <button class="ghost small" id="apply" type="button" data-i18n="apply" disabled>اعمال اصلاح‌ها</button>
+          <button class="ghost small" id="copy" type="button" data-i18n="copy" disabled>رونوشت</button>
+        </div>
+        <div class="view" id="view-issues" role="tabpanel" aria-labelledby="tab-issues" dir="rtl"></div>
+        <div class="view" id="view-fixed" role="tabpanel" aria-labelledby="tab-fixed" dir="rtl" hidden></div>
+      </div>
+    </section>
+
+    <section class="diagnostics" aria-label="Diagnostics">
+      <h2 data-i18n="list.title">فهرست مشکلات</h2>
+      <ol id="diag-list" class="diag-list"></ol>
+      <p id="diag-empty" class="empty" data-i18n="list.empty">هیچ مشکلی پیدا نشد. ✨</p>
+    </section>
+
+    <section class="install" aria-label="Install">
+      <div>
+        <h2 data-i18n="install.title">در پروژهٔ خودتان</h2>
+        <p data-i18n="install.body">همین موتور به‌صورت کتابخانهٔ پایتون، خط فرمان، هوک pre-commit و GitHub Action در دسترس است.</p>
+      </div>
+      <pre dir="ltr"><code>pip install "paknevis @ git+https://github.com/mrzroot/paknevis"
+paknevis check docs/          # report
+paknevis fix --diff thesis.tex  # preview fixes</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p data-i18n="footer">همه‌چیز در مرورگر شما اجرا می‌شود (Pyodide)؛ متنی به سروری فرستاده نمی‌شود.</p>
+    <p class="small"><span data-i18n="made">ساخته‌شده به دست</span> <a href="https://github.com/mrzroot">Mohammadreza Zare</a> · MIT · <span id="engine-version"></span> · <span data-i18n="font">قلم</span> <a href="https://github.com/rastikerdar/vazirmatn">Vazirmatn</a> (OFL)</p>
+  </footer>
+
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <script src="assets/samples.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

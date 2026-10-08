@@ -1,0 +1,23 @@
+name: ✨ New rule, dictionary word or feature
+description: Suggest a new rule, a spelling-dictionary entry or another improvement.
+labels: [enhancement]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options: [New rule, Dictionary entry, CLI / API, Playground, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal / پیشنهاد
+      description: What should paknevis do? Include before → after examples and cases that must NOT change.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source / مرجع
+      description: For spelling and style rules, a reference (e.g. دستور خط فارسی فرهنگستان) helps a lot.

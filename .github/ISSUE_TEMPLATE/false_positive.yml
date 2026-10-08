@@ -1,0 +1,35 @@
+name: 🎯 False positive / wrong fix
+description: A rule flagged or changed text that was already correct (or fixed it wrongly).
+labels: [false-positive]
+body:
+  - type: input
+    id: rule
+    attributes:
+      label: Rule / قاعده
+      placeholder: "e.g. zwnj-mi-prefix (PN202)"
+    validations:
+      required: true
+  - type: textarea
+    id: sentence
+    attributes:
+      label: Input sentence / جملهٔ ورودی
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result / نتیجهٔ درست
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: syntax
+    attributes:
+      label: Syntax
+      options: [plain text, Markdown, HTML, LaTeX, docx]
+  - type: input
+    id: version
+    attributes:
+      label: paknevis version
+      placeholder: "output of `paknevis --version`"
