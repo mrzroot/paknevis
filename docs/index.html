@@ -14,6 +14,9 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/Vazirmatn-wght.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/landing.css">
+  <link rel="canonical" href="https://mrzroot.github.io/paknevis/">
+  <script>(function(){try{var q=new URLSearchParams(location.search).get("lang");if(q==="fa"||q==="en")localStorage.setItem("paknevis.lang",q);else if(!localStorage.getItem("paknevis.lang")){var m=localStorage.getItem("mrz-lang");if(m==="fa"||m==="en")localStorage.setItem("paknevis.lang",m)}var l=localStorage.getItem("paknevis.lang")||"fa";document.documentElement.lang=l;document.documentElement.dir=l==="fa"?"rtl":"ltr"}catch(e){}})()</script>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 </head>
 <body>
@@ -122,6 +125,115 @@
 paknevis check docs/          # report
 paknevis fix --diff thesis.tex  # preview fixes</code></pre>
     </section>
+
+    <section class="lx" id="why" aria-labelledby="why-h">
+      <div class="lx-head">
+        <span class="lx-eyebrow"><span data-l="fa">چرا پاک‌نویس</span><span data-l="en">Why paknevis</span></span>
+        <h2 id="why-h"><span data-l="fa">ویراستاری دقیق که هیچ‌وقت کد شما را خراب نمی‌کند.</span><span data-l="en">A careful copy editor that never breaks your code.</span></h2>
+        <p><span data-l="fa">نیم‌فاصله، حروف عربی، نشانه‌گذاری، رقم‌ها و غلط‌های رایج را درست می‌کند و به کد، لینک، مارک‌آپ و فرمول دست نمی‌زند.</span><span data-l="en">It fixes ZWNJ, Arabic characters, punctuation, digits and common misspellings, and leaves code, URLs, markup and math alone.</span></p>
+      </div>
+      <div class="lx-grid">
+        <div class="lx-card"><div class="ic">🧩</div><h3><span data-l="fa">آگاه از قالب</span><span data-l="en">Format-aware</span></h3><p><span data-l="fa">متن ساده، Markdown، HTML و LaTeX (با XePersian)؛ بلوک‌های کد، فرانت‌متر، تگ‌ها، فرمول‌ها و <code>\lr{…}</code> محافظت می‌شوند. پشتیبانی اختیاری از ‎.docx.</span><span data-l="en">Plain text, Markdown, HTML and LaTeX (XePersian-aware). Code, front matter, tags, math and <code>\lr{…}</code> are protected. Optional .docx support.</span></p></div>
+        <div class="lx-card"><div class="ic">🛡️</div><h3><span data-l="fa">محافظه‌کار</span><span data-l="en">Conservative by design</span></h3><p><span data-l="fa">قاعده‌ها فقط در بافت فارسی عمل می‌کنند: <code>Python 3.12</code> یا «میز» و «میدان» دست نمی‌خورند.</span><span data-l="en">Rules act only in Persian context: <code>Python 3.12</code>, <code>10GB</code> or nouns like «میز» and «میدان» stay untouched.</span></p></div>
+        <div class="lx-card"><div class="ic">🔁</div><h3><span data-l="fa">تکرارپذیر</span><span data-l="en">Idempotent</span></h3><p><span data-l="fa"><code>fix(fix(x)) == fix(x)</code>؛ با تست‌های property-based همراه با «ناحیه‌های محافظت‌شده هرگز تغییر نمی‌کنند».</span><span data-l="en"><code>fix(fix(x)) == fix(x)</code>, verified with property-based tests, along with “protected regions never change”.</span></p></div>
+        <div class="lx-card"><div class="ic">📏</div><h3><span data-l="fa">۲۵ قاعدهٔ مستند</span><span data-l="en">25 documented rules</span></h3><p><span data-l="fa">هر قاعده کد (<code>PN203</code>)، نام، شدت، توضیح دوزبانه و مثال دارد و جداگانه قابل خاموش کردن است.</span><span data-l="en">Each has a code (<code>PN203</code>), a name, a severity, a bilingual explanation and examples, and can be turned off.</span></p></div>
+        <div class="lx-card"><div class="ic">⚙️</div><h3><span data-l="fa">قابل پیکربندی</span><span data-l="en">Configurable</span></h3><p><span data-l="fa">در <code>pyproject.toml</code>: سبک رقم، «خانه‌ی» یا «خانهٔ»، واژه‌نامهٔ اختصاصی و دستورهای <code>paknevis-disable</code>.</span><span data-l="en">In <code>pyproject.toml</code>: digit style, «خانه‌ی» vs «خانهٔ», custom dictionaries and inline <code>paknevis-disable</code> comments.</span></p></div>
+        <div class="lx-card"><div class="ic">🔒</div><h3><span data-l="fa">همین موتور، در مرورگر</span><span data-l="en">The real engine, in your browser</span></h3><p><span data-l="fa">ویرایشگر بالا خودِ پکیج پایتون را با Pyodide اجرا می‌کند؛ پس با CLI همیشه یکسان است و متن شما جایی نمی‌رود.</span><span data-l="en">The editor above runs the actual Python package via Pyodide, so it always agrees with the CLI, and your text never leaves the page.</span></p></div>
+      </div>
+    </section>
+
+    <section class="lx" aria-labelledby="ba-h">
+      <div class="lx-head">
+        <span class="lx-eyebrow"><span data-l="fa">پیش و پس</span><span data-l="en">Before / after</span></span>
+        <h2 id="ba-h"><span data-l="fa">یک جمله، شش اصلاح.</span><span data-l="en">One sentence, six fixes.</span></h2>
+      </div>
+      <div class="ba">
+        <div class="ba-row"><b><span data-l="fa">پیش</span><span data-l="en">before</span></b><div>امروز <s>مي خواهم</s> <s>درباره ي</s> <s>نرم افزار هاي</s> متن باز بنویسم <s>,</s> اما وقت ندارم <s>...</s></div></div>
+        <div class="ba-row after"><b><span data-l="fa">پس</span><span data-l="en">after</span></b><div>امروز <ins>می‌خواهم</ins> <ins>درباره‌ی</ins> <ins>نرم‌افزارهای</ins> متن باز <ins>بنویسم،</ins> اما وقت <ins>ندارم…</ins></div></div>
+        <div class="ba-row"><b>LaTeX</b><div><code dir="ltr">\section{</code><s>بيان</s> مسئله<code dir="ltr">}</code> در این پژوهش <s>,</s> <s>روش های</s> جدید را بررسی <s>می کنیم</s> <code dir="ltr">\cite{goodfellow2016}</code>.</div></div>
+        <div class="ba-row after"><b>LaTeX</b><div><code dir="ltr">\section{</code><ins>بیان</ins> مسئله<code dir="ltr">}</code> در این <ins>پژوهش،</ins> <ins>روش‌های</ins> جدید را بررسی <ins>می‌کنیم</ins> <code dir="ltr">\cite{goodfellow2016}</code>.</div></div>
+      </div>
+    </section>
+
+    <section class="lx" aria-labelledby="rules-h">
+      <div class="lx-head">
+        <span class="lx-eyebrow"><span data-l="fa">قاعده‌ها</span><span data-l="en">Rules</span></span>
+        <h2 id="rules-h"><span data-l="fa">۲۵ قاعده در ۵ دسته.</span><span data-l="en">25 rules in 5 families.</span></h2>
+        <p><span data-l="fa">با <code>paknevis explain PN203</code> توضیح کامل و مثال هر قاعده را ببینید.</span><span data-l="en">Run <code>paknevis explain PN203</code> for the full explanation and examples of any rule.</span></p>
+      </div>
+      <div class="rules">
+        <div class="rg"><h3><span data-l="fa">نویسه‌ها</span><span data-l="en">Characters</span><span>PN1xx</span></h3><ul><li><code>101</code>ي → ی</li><li><code>102</code>ك → ک</li><li><code>103</code><span data-l="fa">«ه» غیرفارسی</span><span data-l="en">non-Persian heh</span></li><li><code>104</code><span data-l="fa">تای گرد «ة»</span><span data-l="en">teh marbuta «ة»</span></li><li><code>105</code><span data-l="fa">رقم‌های عربی</span><span data-l="en">Arabic digits</span></li><li><code>106</code><span data-l="fa">سبک رقم</span><span data-l="en">digit style</span></li></ul></div>
+        <div class="rg"><h3><span data-l="fa">نیم‌فاصله</span><span data-l="en">ZWNJ</span><span>PN2xx</span></h3><ul><li><code>201</code><span data-l="fa">نیم‌فاصلهٔ زائد</span><span data-l="en">stray / duplicate</span></li><li><code>202</code>می روم → می‌روم</li><li><code>203</code>کتاب ها → کتاب‌ها</li><li><code>204</code>بزرگ ترین → بزرگ‌ترین</li><li><code>205</code>خانه ای → خانه‌ای</li></ul></div>
+        <div class="rg"><h3><span data-l="fa">نشانه‌گذاری</span><span data-l="en">Punctuation</span><span>PN3xx</span></h3><ul><li><code>301</code>, → ،</li><li><code>302</code>; → ؛</li><li><code>303</code>? → ؟</li><li><code>304</code><span data-l="fa">فاصلهٔ پیش از نشانه</span><span data-l="en">space before</span></li><li><code>305</code><span data-l="fa">فاصلهٔ پس از نشانه</span><span data-l="en">space after</span></li><li><code>306</code><span data-l="fa">کمانک و گیومه</span><span data-l="en">brackets &amp; quotes</span></li><li><code>307</code>"…" → «…»</li><li><code>308</code>... → …</li><li><code>309</code>؟؟؟ → ؟</li></ul></div>
+        <div class="rg"><h3><span data-l="fa">فاصله‌ها</span><span data-l="en">Whitespace</span><span>PN4xx</span></h3><ul><li><code>401</code><span data-l="fa">فاصله‌های پشت‌سرهم</span><span data-l="en">repeated spaces</span></li><li><code>402</code><span data-l="fa">فاصلهٔ پایان سطر</span><span data-l="en">trailing whitespace</span></li><li><code>403</code><span data-l="fa">کشیده «ـ»</span><span data-l="en">kashida «ـ»</span></li></ul></div>
+        <div class="rg"><h3><span data-l="fa">املا</span><span data-l="en">Spelling</span><span>PN5xx</span></h3><ul><li><code>501</code><span data-l="fa">واژه‌نامهٔ YAML قابل گسترش</span><span data-l="en">extensible YAML dictionary</span></li><li><code>502</code>لطفا → لطفاً</li></ul></div>
+      </div>
+    </section>
+
+    <section class="lx" id="everywhere" aria-labelledby="ev-h">
+      <div class="lx-head">
+        <span class="lx-eyebrow"><span data-l="fa">همه‌جا</span><span data-l="en">Everywhere</span></span>
+        <h2 id="ev-h"><span data-l="fa">در ترمینال، کد، کامیت و CI.</span><span data-l="en">In your terminal, code, commits and CI.</span></h2>
+        <p><span data-l="fa">هنوز در PyPI نیست؛ از گیت‌هاب نصب کنید (پایتون ۳٫۱۰ تا ۳٫۱۳). کدهای خروج مناسب CI: ۰ تمیز، ۱ مشکل، ۲ خطا.</span><span data-l="en">Not on PyPI yet, so install from GitHub (Python 3.10–3.13). CI-friendly exit codes: 0 clean, 1 issues, 2 error.</span></p>
+      </div>
+      <div class="ev">
+        <div class="ev-tabs" role="tablist">
+          <button type="button" role="tab" aria-selected="true" data-ev="ev-cli">CLI<small><span data-l="fa">check · fix · explain</span><span data-l="en">check · fix · explain</span></small></button>
+          <button type="button" role="tab" aria-selected="false" data-ev="ev-py">Python API<small>paknevis.fix() · lint()</small></button>
+          <button type="button" role="tab" aria-selected="false" data-ev="ev-pc">pre-commit<small><span data-l="fa">پیش از هر کامیت</span><span data-l="en">on every commit</span></small></button>
+          <button type="button" role="tab" aria-selected="false" data-ev="ev-gh">GitHub Action<small><span data-l="fa">حاشیه‌نویسی روی PR</span><span data-l="en">inline PR annotations</span></small></button>
+        </div>
+        <div>
+          <div class="ev-pane" id="ev-cli"><button class="ghost small cp" type="button" data-cp="ev-cli">Copy</button><pre>pip install "paknevis @ git+https://github.com/mrzroot/paknevis@v0.1.0"
+
+paknevis check docs/              <span class="c"># report problems</span>
+paknevis fix --diff thesis.tex    <span class="c"># preview fixes</span>
+paknevis fix --check .            <span class="c"># CI: exit 1 if files would change</span>
+paknevis fix .                    <span class="c"># rewrite in place</span>
+cat notes.txt | paknevis fix -    <span class="c"># stdin → stdout</span>
+paknevis explain zwnj-plural</pre></div>
+          <div class="ev-pane" id="ev-py" hidden><button class="ghost small cp" type="button" data-cp="ev-py">Copy</button><pre>import paknevis
+
+paknevis.fix("كتاب هاي من")                 <span class="c"># 'کتاب‌های من'</span>
+paknevis.fix(md_text, syntax="markdown")    <span class="c"># code, links, HTML untouched</span>
+paknevis.fix(text, digits="latin", disable=["kashida"])
+
+for d in paknevis.lint("علي مي رود"):
+    print(d.code, d.rule, d.line, d.column, d.message, d.replacement)</pre></div>
+          <div class="ev-pane" id="ev-pc" hidden><button class="ghost small cp" type="button" data-cp="ev-pc">Copy</button><pre><span class="c"># .pre-commit-config.yaml</span>
+repos:
+  - repo: https://github.com/mrzroot/paknevis
+    rev: v0.1.0
+    hooks:
+      - id: paknevis          <span class="c"># fixes files</span>
+      <span class="c"># - id: paknevis-check  # report only</span></pre></div>
+          <div class="ev-pane" id="ev-gh" hidden><button class="ghost small cp" type="button" data-cp="ev-gh">Copy</button><pre>- uses: actions/checkout@v4
+- uses: mrzroot/paknevis@v0.1.0
+  with:
+    paths: docs/ README.md
+    <span class="c"># command: check        # or "fix"</span>
+    <span class="c"># args: --fail-on error</span></pre></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lx lx-faq" id="faq" aria-labelledby="faq-h">
+      <div class="lx-head">
+        <span class="lx-eyebrow"><span data-l="fa">پرسش‌ها</span><span data-l="en">FAQ</span></span>
+        <h2 id="faq-h"><span data-l="fa">پرسش‌های رایج</span><span data-l="en">Frequently asked</span></h2>
+      </div>
+      <details><summary><span data-l="fa">متن من به سروری فرستاده می‌شود؟</span><span data-l="en">Is my text uploaded anywhere?</span></summary><p><span data-l="fa">نه. Pyodide و پکیج یک بار دانلود می‌شوند و همه‌چیز داخل مرورگر اجرا می‌شود. CLI و Action هم کاملاً محلی‌اند.</span><span data-l="en">No. Pyodide and the package are downloaded once and everything runs in your browser. The CLI and the Action are fully local too.</span></p></details>
+      <details><summary><span data-l="fa">کد و فرمول‌های من را خراب نمی‌کند؟</span><span data-l="en">Will it mangle my code or math?</span></summary><p><span data-l="fa">نه. کد درون‌خطی و بلوکی، URLها، تگ‌ها و ویژگی‌های HTML، فرانت‌متر، <code>$…$</code>، دستورهای LaTeX و محیط‌های verbatim و TikZ محافظت می‌شوند؛ با تست بررسی شده که هرگز تغییر نکنند.</span><span data-l="en">No. Inline and fenced code, URLs, HTML tags and attributes, front matter, <code>$…$</code>, LaTeX commands and verbatim/TikZ environments are protected, and tests check they never change.</span></p></details>
+      <details><summary><span data-l="fa">چرا بعضی نیم‌فاصله‌ها را اصلاح نمی‌کند؟</span><span data-l="en">Why does it skip some ZWNJ fixes?</span></summary><p><span data-l="fa">پاک‌نویس قاعده‌محور است، نه تحلیلگر کامل صرفی. برای جلوگیری از خطای مثبت، فقط فهرست گزیده‌ای از ستاک‌ها را اصلاح می‌کند. اگر خطایی دیدید جمله را در Issue بفرستید.</span><span data-l="en">It's rule-based, not a full morphological analyser. To avoid false positives it only fixes a curated list of stems. Spotted a miss or a false positive? Open an issue with the sentence.</span></p></details>
+      <details><summary><span data-l="fa">«خانه‌ی» یا «خانهٔ»؟</span><span data-l="en">«خانه‌ی» or «خانهٔ»?</span></summary><p><span data-l="fa">هر دو. با گزینهٔ <code>ezafe</code> (یا منوی بالا) سبک دلخواهتان را انتخاب کنید؛ رقم‌ها هم فارسی، لاتین یا دست‌نخورده می‌توانند بمانند.</span><span data-l="en">Either. Pick your style with the <code>ezafe</code> option (or the menu above). Digits can be Persian, Latin or left as they are.</span></p></details>
+      <details><summary><span data-l="fa">مجوز؟</span><span data-l="en">License?</span></summary><p><span data-l="fa">MIT. قلم وزیرمتن با مجوز SIL OFL 1.1 در همین صفحه میزبانی می‌شود.</span><span data-l="en">MIT. The Vazirmatn font is self-hosted on this page under the SIL OFL 1.1.</span></p></details>
+    </section>
+
+    <section class="lx-cta">
+      <h2><span data-l="fa">نوشتهٔ فارسی‌تان را پاک‌نویس کنید.</span><span data-l="en">Give your Persian writing a clean copy.</span></h2>
+      <div class="row"><a class="ghost btn-p" href="#input"><span data-l="fa">امتحان در ویرایشگر</span><span data-l="en">Try it in the editor</span></a><a class="ghost" href="https://github.com/mrzroot/paknevis">GitHub</a><a class="ghost" href="https://github.com/mrzroot/paknevis/releases"><span data-l="fa">انتشارها</span><span data-l="en">Releases</span></a></div>
+      <p class="top-links"><a href="https://mrzroot.github.io/"><span data-l="fa">صفحهٔ سازنده</span><span data-l="en">Author's site</span></a> · <a href="https://mrzroot.github.io/projects/"><span data-l="fa">پروژه‌های دیگر</span><span data-l="en">More projects</span></a></p>
+    </section>
   </main>
 
   <footer>
@@ -132,5 +244,11 @@ paknevis fix --diff thesis.tex  # preview fixes</code></pre>
   <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
   <script src="assets/samples.js"></script>
   <script src="assets/app.js"></script>
+  <script>
+    (function(){
+      document.querySelectorAll('[data-ev]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('[data-ev]').forEach(function(x){x.setAttribute('aria-selected',String(x===b));document.getElementById(x.dataset.ev).hidden=x!==b})})});
+      document.querySelectorAll('[data-cp]').forEach(function(b){b.addEventListener('click',function(){var t=document.getElementById(b.dataset.cp).querySelector('pre').textContent.split('\n').map(function(l){return l.replace(/\s+#.*$/,'')}).join('\n');if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='✓';setTimeout(function(){b.textContent=o},1200)})})});
+    })();
+  </script>
 </body>
 </html>
