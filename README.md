@@ -12,6 +12,8 @@ safe for Markdown, HTML and LaTeX (XePersian).
 [![CI](https://github.com/mrzroot/paknevis/actions/workflows/ci.yml/badge.svg)](https://github.com/mrzroot/paknevis/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-teal.svg)](LICENSE)
 [![Python 3.10–3.13](https://img.shields.io/badge/python-3.10%20%E2%80%93%203.13-blue.svg)](pyproject.toml)
+[![Release](https://img.shields.io/github/v/release/mrzroot/paknevis?sort=semver)](https://github.com/mrzroot/paknevis/releases)
+[![Stars](https://img.shields.io/github/stars/mrzroot/paknevis?style=flat&logo=github)](https://github.com/mrzroot/paknevis/stargazers)
 [![Playground](https://img.shields.io/badge/playground-try%20in%20browser-0f766e.svg)](https://mrzroot.github.io/paknevis/)
 
 [**🧪 Playground**](https://mrzroot.github.io/paknevis/) · [فارسی](#فارسی) · [English](#english) · [Rules](#rules--قاعدهها) · [Changelog](CHANGELOG.md)
@@ -19,6 +21,16 @@ safe for Markdown, HTML and LaTeX (XePersian).
 <a href="https://mrzroot.github.io/paknevis/"><img src="docs/assets/screenshot.png" alt="paknevis playground: Persian text with highlighted issues and the fixed output" width="900"></a>
 
 </div>
+
+### ⚡ Quickstart
+
+```bash
+pip install git+https://github.com/mrzroot/paknevis
+paknevis check docs/      # report issues
+paknevis fix .            # fix everything that is safe to fix
+```
+
+Or paste text into the [browser playground](https://mrzroot.github.io/paknevis/), no install needed.
 
 ---
 
