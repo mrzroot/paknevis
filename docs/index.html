@@ -2,11 +2,13 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="utf-8">
+<script>/*mrz-theme*/(function(){var d=document.documentElement,m='system';try{m=localStorage.getItem('mrz-theme')||'system'}catch(e){}var q=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;var t=m==='light'||m==='dark'?m:(q&&q.matches?'dark':'light');d.setAttribute('data-theme',t);d.style.colorScheme=t})()</script>
+<meta name="theme-color" content="#f7f5ef">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>پاک‌نویس — Persian text linter &amp; auto-fixer · Playground</title>
   <meta name="description" content="پاک‌نویس (paknevis): Prettier/ESLint for Persian writing. Fix ZWNJ, Arabic characters, punctuation and digits — Markdown, HTML and LaTeX aware. Runs the real Python package in your browser.">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#0f766e">
+  
   <meta property="og:title" content="پاک‌نویس · paknevis playground">
   <meta property="og:description" content="Persian text linter and auto-fixer — try it in your browser.">
   <meta property="og:image" content="https://mrzroot.github.io/paknevis/assets/screenshot.png">
@@ -18,6 +20,28 @@
   <link rel="canonical" href="https://mrzroot.github.io/paknevis/">
   <script>(function(){try{var q=new URLSearchParams(location.search).get("lang");if(q==="fa"||q==="en")localStorage.setItem("paknevis.lang",q);else if(!localStorage.getItem("paknevis.lang")){var m=localStorage.getItem("mrz-lang");if(m==="fa"||m==="en")localStorage.setItem("paknevis.lang",m)}var l=localStorage.getItem("paknevis.lang")||"fa";document.documentElement.lang=l;document.documentElement.dir=l==="fa"?"rtl":"ltr"}catch(e){}})()</script>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<style id="mrz-theme-css">
+/* mrz theme toggle */
+.mrz-tt{all:unset;box-sizing:border-box;cursor:pointer;display:inline-grid;place-items:center;flex:none;width:34px;height:34px;border-radius:999px;color:inherit;border:1.5px solid currentColor;transition:transform .2s,background-color .2s}
+.mrz-tt:hover{transform:rotate(-12deg)}.mrz-tt:focus-visible{outline:2px solid #1fb5ad;outline-offset:3px}
+.mrz-tt svg{width:17px;height:17px;display:block}
+html[data-theme=dark] .mrz-tt .i-moon,html:not([data-theme=dark]) .mrz-tt .i-sun{display:none}
+/* paknevis · explicit light/dark (toggle + system), Persian turquoise + amber gold */
+html[data-theme=light]{--bg:#f7f5ef;--bg-grad:radial-gradient(1200px 500px at 85% -10%,rgba(31,181,173,.18) 0%,transparent 60%),radial-gradient(900px 400px at 0% 0%,rgba(232,176,75,.14) 0%,transparent 55%);
+--surface:#fffdf8;--surface-2:#f2eee3;--text:#0b1230;--muted:#4f5878;--border:#e0d9c7;--accent:#0a7671;--accent-2:#1fb5ad;--accent-soft:#d9f2ef;
+--error:#b42318;--error-bg:rgba(180,35,24,.1);--warning:#8a5c0c;--warning-bg:rgba(232,176,75,.18);--info:#1f56b8;--info-bg:rgba(31,86,184,.1);--added-bg:rgba(31,181,173,.22);--zwnj:#b8255c;
+--shadow:0 1px 2px rgba(11,18,48,.05),0 8px 24px rgba(11,18,48,.06);color-scheme:light}
+html[data-theme=dark]{--bg:#070b1a;--bg-grad:radial-gradient(1200px 500px at 85% -10%,rgba(63,208,201,.14) 0%,transparent 60%),radial-gradient(900px 400px at 0% 0%,rgba(232,176,75,.09) 0%,transparent 55%);
+--surface:#0e1428;--surface-2:#121a33;--text:#eceff7;--muted:#a3acc8;--border:#243056;--accent:#3fd0c9;--accent-2:#1fb5ad;--accent-soft:rgba(63,208,201,.14);
+--error:#ff8a80;--error-bg:rgba(255,138,128,.14);--warning:#e8b04b;--warning-bg:rgba(232,176,75,.15);--info:#8db8ff;--info-bg:rgba(141,184,255,.14);--added-bg:rgba(63,208,201,.22);--zwnj:#ff8ac0;
+--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);color-scheme:dark}
+html[data-theme] .btn-p{color:#fff}
+html[data-theme=dark] .btn-p{color:#03201e}
+html[data-theme] .ev-pane pre,html[data-theme] .install pre{background:var(--surface-2);color:var(--text);border:1px solid var(--border)}
+html[data-theme] .ev-pane pre .c{color:var(--muted)}
+html[data-theme] .status[data-state="ready"] .dot{background:#1fb5ad;box-shadow:0 0 0 4px rgba(31,181,173,.18)}
+html[data-theme=light] mark.issue .ws{opacity:1}
+</style>
 </head>
 <body>
   <a class="skip" href="#input" data-i18n="skip">پرش به ویرایشگر</a>
@@ -36,7 +60,7 @@
       </div>
     </div>
     <nav class="actions">
-      <button id="lang-toggle" class="ghost" type="button" aria-label="Switch language">English</button>
+      <button type="button" class="mrz-tt" data-theme-toggle aria-label="Switch to dark mode" title="Switch to dark mode"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></g></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg></button><button id="lang-toggle" class="ghost" type="button" aria-label="Switch language">English</button>
       <a class="ghost" href="https://github.com/mrzroot/paknevis#readme" data-i18n="docs">مستندات</a>
       <a class="ghost github" href="https://github.com/mrzroot/paknevis" aria-label="GitHub">
         <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -250,5 +274,16 @@ repos:
       document.querySelectorAll('[data-cp]').forEach(function(b){b.addEventListener('click',function(){var t=document.getElementById(b.dataset.cp).querySelector('pre').textContent.split('\n').map(function(l){return l.replace(/\s+#.*$/,'')}).join('\n');if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='✓';setTimeout(function(){b.textContent=o},1200)})})});
     })();
   </script>
+<script>/*mrz-theme-toggle*/(function(){var d=document.documentElement,q=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
+function fa(){return d.getAttribute('data-lang')==='fa'||d.lang==='fa'}
+function sync(){var t=d.getAttribute('data-theme')==='dark'?'dark':'light',f=fa();
+document.querySelectorAll('[data-theme-toggle]').forEach(function(x){var l=t==='dark'?(f?'\u062a\u063a\u06cc\u06cc\u0631 \u0628\u0647 \u062d\u0627\u0644\u062a \u0631\u0648\u0634\u0646':'Switch to light mode'):(f?'\u062a\u063a\u06cc\u06cc\u0631 \u0628\u0647 \u062d\u0627\u0644\u062a \u062a\u06cc\u0631\u0647':'Switch to dark mode');x.setAttribute('aria-label',l);x.title=l;x.setAttribute('aria-pressed',t==='dark'?'true':'false')});
+document.querySelectorAll('picture source[media*="prefers-color-scheme"]').forEach(function(s){if(!s.getAttribute('data-mq'))s.setAttribute('data-mq',s.media);var wd=/dark/.test(s.getAttribute('data-mq'));s.media=(wd===(t==='dark'))?'all':'not all'});
+var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#070b1a':'#f7f5ef')}
+function set(t,save){d.setAttribute('data-theme',t);d.style.colorScheme=t;if(save){try{localStorage.setItem('mrz-theme',t)}catch(e){}}try{document.dispatchEvent(new CustomEvent('mrz-theme',{detail:t}))}catch(e){}}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-theme-toggle]');if(!b)return;set(d.getAttribute('data-theme')==='dark'?'light':'dark',true)});
+if(q&&q.addEventListener)q.addEventListener('change',function(){var m;try{m=localStorage.getItem('mrz-theme')}catch(e){}if(m!=='light'&&m!=='dark')set(q.matches?'dark':'light',false)});
+window.addEventListener('storage',function(e){if(e.key==='mrz-theme'){var m=e.newValue;set(m==='light'||m==='dark'?m:(q&&q.matches?'dark':'light'),false)}});
+if(window.MutationObserver)new MutationObserver(sync).observe(d,{attributes:true,attributeFilter:['data-lang','lang','data-theme']});sync()})()</script>
 </body>
 </html>
