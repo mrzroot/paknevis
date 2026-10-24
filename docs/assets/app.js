@@ -181,7 +181,51 @@
     });
   }
 
-  async function loadEngine() {
+  /* The engine (Pyodide + the real paknevis package) runs in a Web Worker so loading it never blocks the page. */
+  function loadEngine() {
+    if (!window.Worker) return loadEngineMain();
+    let worker;
+    try { worker = new Worker(new URL("assets/engine-worker.js", document.baseURI).href); } catch { return loadEngineMain(); }
+    setStatus("loading", "status.runtime");
+    let nextId = 0;
+    const pending = new Map();
+    worker.onmessage = (ev) => {
+      const m = ev.data;
+      if (m.type === "status") { setStatus("loading", m.key); return; }
+      if (m.type === "ready") {
+        state.engine = {
+          run: (text, options) => new Promise((resolve, reject) => {
+            const id = ++nextId; pending.set(id, { resolve, reject });
+            worker.postMessage({ type: "run", id, text, options });
+          }),
+        };
+        state.rules = m.rules;
+        els.version.textContent = `paknevis ${m.version} · Pyodide ${PYODIDE_VERSION}`;
+        setStatus("ready", "status.ready", { v: m.version, py: m.py });
+        document.body.dataset.engine = "ready";
+        renderRulesPanel();
+        analyse();
+        return;
+      }
+      if (m.type === "result") {
+        const p = pending.get(m.id); pending.delete(m.id);
+        if (p) { if (m.error) p.reject(new Error(m.error)); else p.resolve(m.result); }
+        return;
+      }
+      if (m.type === "error") {
+        console.error(m.message);
+        setStatus("error", "status.error", { e: m.message });
+        document.body.dataset.engine = "error";
+      }
+    };
+    worker.onerror = (e) => {
+      setStatus("error", "status.error", { e: e.message || "worker" });
+      document.body.dataset.engine = "error";
+    };
+    worker.postMessage({ type: "init", pyodideUrl: PYODIDE_URL, bundleUrl: new URL(BUNDLE_URL, document.baseURI).href });
+  }
+
+  async function loadEngineMain() {
     try {
       setStatus("loading", "status.runtime");
       await loadScript(`${PYODIDE_URL}pyodide.js`);
@@ -220,13 +264,16 @@
     };
   }
 
-  function analyse() {
+  async function analyse() {
     const text = els.input.value;
+    const seq = state.seq = (state.seq || 0) + 1;
     updateMeta(text);
     saveHash();
     if (!state.engine) { render(); return; }
     try {
-      state.result = state.engine.run(text, options());
+      const result = await state.engine.run(text, options());
+      if (seq !== state.seq) return; // a newer analysis superseded this one
+      state.result = result;
       state.result.input = text;
     } catch (error) {
       console.error(error);
