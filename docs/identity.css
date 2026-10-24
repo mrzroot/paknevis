@@ -26,3 +26,6 @@ html[dir=rtl] .lx-card::after{clip-path:polygon(0 0,100% 0,0 100%)}
 
 /* tablist wrapper keeps the original layout */
 .tabs .tablist{display:contents}
+
+/* QA: keep the "A" (automatic) badge anchored to the theme button */
+html .mrz-tt{position:relative}
