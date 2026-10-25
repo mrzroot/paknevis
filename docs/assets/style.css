@@ -8,24 +8,24 @@
 
 :root {
   --bg: #f6f8f7;
-  --bg-grad: radial-gradient(1200px 500px at 85% -10%, #ccfbf1 0%, transparent 60%), radial-gradient(900px 400px at 0% 0%, #e0f2fe 0%, transparent 55%);
+  --bg-grad: radial-gradient(1200px 500px at 85% -10%, #fbdacc 0%, transparent 60%), radial-gradient(900px 400px at 0% 0%, #e0f2fe 0%, transparent 55%);
   --surface: #ffffff;
   --surface-2: #f1f5f4;
-  --text: #0f1f1c;
+  --text: #1f130f;
   --muted: #5b6b68;
   --border: #dbe4e1;
-  --accent: #0f766e;
-  --accent-2: #14b8a6;
-  --accent-soft: #ccfbf1;
+  --accent: #76270f;
+  --accent-2: #b83a14;
+  --accent-soft: #fbdacc;
   --error: #dc2626;
   --error-bg: rgba(220, 38, 38, 0.10);
   --warning: #d97706;
   --warning-bg: rgba(217, 119, 6, 0.12);
   --info: #2563eb;
   --info-bg: rgba(37, 99, 235, 0.10);
-  --added-bg: rgba(16, 185, 129, 0.20);
+  --added-bg: rgba(185,55,16, 0.20);
   --zwnj: #db2777;
-  --shadow: 0 1px 2px rgba(15, 31, 28, 0.06), 0 8px 24px rgba(15, 31, 28, 0.06);
+  --shadow: 0 1px 2px rgba(31,19,15, 0.06), 0 8px 24px rgba(31,19,15, 0.06);
   --radius: 14px;
   --mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, monospace;
   color-scheme: light dark;
@@ -33,23 +33,23 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0b1211;
-    --bg-grad: radial-gradient(1200px 500px at 85% -10%, rgba(20, 184, 166, 0.16) 0%, transparent 60%), radial-gradient(900px 400px at 0% 0%, rgba(56, 189, 248, 0.10) 0%, transparent 55%);
-    --surface: #111b1a;
-    --surface-2: #162321;
-    --text: #e6f0ee;
+    --bg: #120d0b;
+    --bg-grad: radial-gradient(1200px 500px at 85% -10%, rgba(184,58,20, 0.16) 0%, transparent 60%), radial-gradient(900px 400px at 0% 0%, rgba(56, 189, 248, 0.10) 0%, transparent 55%);
+    --surface: #1b1311;
+    --surface-2: #231916;
+    --text: #f0e9e6;
     --muted: #93a6a2;
     --border: #243533;
-    --accent: #2dd4bf;
-    --accent-2: #14b8a6;
-    --accent-soft: rgba(45, 212, 191, 0.14);
+    --accent: #d45f2d;
+    --accent-2: #b83a14;
+    --accent-soft: rgba(212,95,45, 0.14);
     --error: #f87171;
     --error-bg: rgba(248, 113, 113, 0.14);
     --warning: #fbbf24;
     --warning-bg: rgba(251, 191, 36, 0.14);
     --info: #60a5fa;
     --info-bg: rgba(96, 165, 250, 0.14);
-    --added-bg: rgba(52, 211, 153, 0.22);
+    --added-bg: rgba(211,100,52, 0.22);
     --zwnj: #f472b6;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.35);
   }
@@ -78,7 +78,7 @@ button, select, textarea, input { font: inherit; color: inherit; }
   display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap;
 }
 .brand { display: flex; gap: .9rem; align-items: center; }
-.logo { width: 52px; height: 52px; flex: none; filter: drop-shadow(0 6px 14px rgba(15, 118, 110, .35)); }
+.logo { width: 52px; height: 52px; flex: none; filter: drop-shadow(0 6px 14px rgba(118,39,15, .35)); }
 h1 { margin: 0; font-size: 1.6rem; font-weight: 800; letter-spacing: -.01em; line-height: 1.3; }
 h1 .en-name { font-family: var(--mono); font-size: .9rem; font-weight: 500; color: var(--muted); margin-inline-start: .35rem; }
 .tagline { margin: .1rem 0 0; color: var(--muted); font-size: .95rem; }
@@ -114,7 +114,7 @@ main { max-width: 1280px; margin: 0 auto; padding: .5rem 1.25rem 2rem; }
 .status { display: inline-flex; align-items: center; gap: .5rem; font-size: .9rem; color: var(--muted); margin-inline-end: auto; }
 .status .dot { width: .6rem; height: .6rem; border-radius: 50%; background: var(--muted); flex: none; }
 .status[data-state="loading"] .dot { background: var(--warning); animation: pulse 1s ease-in-out infinite; }
-.status[data-state="ready"] .dot { background: #10b981; box-shadow: 0 0 0 4px rgba(16, 185, 129, .18); }
+.status[data-state="ready"] .dot { background: #b93710; box-shadow: 0 0 0 4px rgba(185,55,16, .18); }
 .status[data-state="error"] .dot { background: var(--error); }
 @keyframes pulse { 50% { opacity: .35; transform: scale(.8); } }
 
@@ -198,7 +198,7 @@ mark.added { background: var(--added-bg); color: inherit; border-radius: 3px; }
 }
 @media (max-width: 900px) { .install { grid-template-columns: 1fr; } }
 .install p { margin: 0; color: var(--muted); }
-.install pre { margin: 0; background: #0b1211; color: #d1fae5; border-radius: 12px; padding: .9rem 1rem; overflow: auto; font-size: .85rem; line-height: 1.7; text-align: left; }
+.install pre { margin: 0; background: #120d0b; color: #d1fae5; border-radius: 12px; padding: .9rem 1rem; overflow: auto; font-size: .85rem; line-height: 1.7; text-align: left; }
 .install code { font-family: var(--mono); }
 
 footer { max-width: 1280px; margin: 0 auto; padding: 0 1.25rem 2rem; color: var(--muted); font-size: .9rem; text-align: center; }

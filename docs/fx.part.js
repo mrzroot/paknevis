@@ -3,7 +3,7 @@ var cv=document.createElement('canvas');cv.className='ink';cv.setAttribute('aria
 var tr=[],blots=[],pen={x:0,y:0,vx:0,vy:0,ph:Math.random()*9,u:0},lastM=0;
 function nibseg(c,a,b,wid,col,al){var ang=-Math.PI/4,dx=Math.cos(ang)*wid/2,dy=Math.sin(ang)*wid/2;c.globalAlpha=al;c.fillStyle=col;c.beginPath();c.moveTo(a.x-dx,a.y-dy);c.lineTo(a.x+dx,a.y+dy);c.lineTo(b.x+dx,b.y+dy);c.lineTo(b.x-dx,b.y-dy);c.closePath();c.fill()}
 cv.addEventListener('pointerdown',function(e){var r=cv.getBoundingClientRect();blots.push({x:e.clientX-r.left,y:e.clientY-r.top,t:performance.now(),r:6+Math.random()*10,sp:Array.from({length:7},function(){return[Math.random()*6.3,8+Math.random()*26,1+Math.random()*3]})})});
-FX.loop(cv,function(c,w,h,t,dt,m){var D=FX.theme()==='dark',col=D?'#e9c46a':'#10334a',teal=D?'#2fd0c8':'#0a7e84';c.clearRect(0,0,w,h);
+FX.loop(cv,function(c,w,h,t,dt,m){var D=FX.theme()==='dark',col=D?'#e9c46a':'#10334a',teal=D?'#e07a4f':'#84260a';c.clearRect(0,0,w,h);
  var now=performance.now(),user=m.in&&now-lastM<1800;
  if(m.in){if(m.x!==pen.lx||m.y!==pen.ly){lastM=now;pen.lx=m.x;pen.ly=m.y}}
  var tx,ty;

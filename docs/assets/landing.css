@@ -41,7 +41,7 @@ html[dir="ltr"] .lx { font-family: system-ui, -apple-system, "Segoe UI", "Vazirm
 .ev-tabs small { display: block; font-weight: 400; color: var(--muted); font-size: .8rem; }
 @media (max-width: 800px) { .ev-tabs small { display: none; } }
 .ev-pane { position: relative; min-width: 0; }
-.ev-pane pre { margin: 0; background: #0b1211; color: #d1fae5; border-radius: var(--radius); padding: 1rem 1.1rem; overflow: auto; font: .86rem/1.75 var(--mono); text-align: left; direction: ltr; min-height: 100%; }
+.ev-pane pre { margin: 0; background: #120d0b; color: #d1fae5; border-radius: var(--radius); padding: 1rem 1.1rem; overflow: auto; font: .86rem/1.75 var(--mono); text-align: left; direction: ltr; min-height: 100%; }
 .ev-pane pre .c { color: #6b8f88; }
 .ev-pane .cp { position: absolute; top: .6rem; inset-inline-end: .6rem; }
 html[dir="rtl"] .ev-pane .cp { right: auto; left: .6rem; }
