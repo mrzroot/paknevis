@@ -1,3 +1,4 @@
+"""Word documents: linting and fixing while preserving formatting, the CLI on .docx, and range replacement."""
 from __future__ import annotations
 
 from pathlib import Path

@@ -1,3 +1,4 @@
+"""Shared fixtures: the directory of input/expected fixture pairs."""
 from __future__ import annotations
 
 from pathlib import Path

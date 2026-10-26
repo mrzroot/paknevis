@@ -1,3 +1,4 @@
+"""Configuration: defaults, dash/underscore keys, validation and loading from pyproject.toml."""
 from __future__ import annotations
 
 from pathlib import Path

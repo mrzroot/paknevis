@@ -1,3 +1,4 @@
+"""Zero-width non-joiner (half-space) rules: cleanup, valid uses kept, fixes for verbs and affixes."""
 from __future__ import annotations
 
 import pytest

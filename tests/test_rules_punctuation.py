@@ -1,3 +1,4 @@
+"""Punctuation rules: Latin marks to Persian marks, spacing around punctuation."""
 from __future__ import annotations
 
 import pytest

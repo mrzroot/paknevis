@@ -1,3 +1,4 @@
+"""Command line: check and fix commands (exit codes, reports, Persian messages), info commands and `python -m paknevis`."""
 from __future__ import annotations
 
 import io

@@ -1,3 +1,4 @@
+"""Python API: fix and lint, positions, sorting, option overrides, disabling rules, severities, syntax aliases, applying findings and performance on large text."""
 from __future__ import annotations
 
 import json

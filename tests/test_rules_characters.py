@@ -1,3 +1,4 @@
+"""Character rules: Arabic yeh/kaf, non-Persian heh and the default-mode warnings."""
 from __future__ import annotations
 
 import pytest

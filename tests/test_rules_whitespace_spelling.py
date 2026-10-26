@@ -1,3 +1,4 @@
+"""Whitespace and spelling rules: repeated spaces, trailing whitespace, kashida, spelling lists and tanvin."""
 from __future__ import annotations
 
 import pytest

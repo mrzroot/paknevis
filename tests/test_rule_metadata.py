@@ -1,3 +1,4 @@
+"""Rule registry metadata: unique codes and names, minimum rule count, complete descriptions and examples."""
 from __future__ import annotations
 
 import re

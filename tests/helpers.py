@@ -1,3 +1,4 @@
+"""Small assertions shared by the rule tests: the text a rule fixes and the rule codes a text triggers."""
 from __future__ import annotations
 
 import paknevis
