@@ -151,7 +151,7 @@ html[data-theme=light] mark.issue .ws{opacity:1}
         <h2 data-i18n="install.title">در پروژهٔ خودتان</h2>
         <p data-i18n="install.body">همین موتور به‌صورت کتابخانهٔ پایتون، خط فرمان، هوک pre-commit و GitHub Action در دسترس است.</p>
       </div>
-      <pre dir="ltr"><code>pip install "paknevis @ git+https://github.com/mrzroot/paknevis"
+      <pre dir="ltr" tabindex="0"><code>pip install "paknevis @ git+https://github.com/mrzroot/paknevis"
 paknevis check docs/          # report
 paknevis fix --diff thesis.tex  # preview fixes</code></pre>
     </section>
@@ -214,7 +214,7 @@ paknevis fix --diff thesis.tex  # preview fixes</code></pre>
           <button type="button" role="tab" aria-selected="false" data-ev="ev-gh">GitHub Action<small><span data-l="fa">حاشیه‌نویسی روی PR</span><span data-l="en">inline PR annotations</span></small></button>
         </div>
         <div>
-          <div class="ev-pane" id="ev-cli"><button class="ghost small cp" type="button" data-cp="ev-cli">Copy</button><pre>pip install "paknevis @ git+https://github.com/mrzroot/paknevis@v0.1.0"
+          <div class="ev-pane" id="ev-cli"><button class="ghost small cp" type="button" data-cp="ev-cli">Copy</button><pre tabindex="0">pip install "paknevis @ git+https://github.com/mrzroot/paknevis@v0.1.0"
 
 paknevis check docs/              <span class="c"># report problems</span>
 paknevis fix --diff thesis.tex    <span class="c"># preview fixes</span>
@@ -222,7 +222,7 @@ paknevis fix --check .            <span class="c"># CI: exit 1 if files would ch
 paknevis fix .                    <span class="c"># rewrite in place</span>
 cat notes.txt | paknevis fix -    <span class="c"># stdin → stdout</span>
 paknevis explain zwnj-plural</pre></div>
-          <div class="ev-pane" id="ev-py" hidden><button class="ghost small cp" type="button" data-cp="ev-py">Copy</button><pre>import paknevis
+          <div class="ev-pane" id="ev-py" hidden><button class="ghost small cp" type="button" data-cp="ev-py">Copy</button><pre tabindex="0">import paknevis
 
 paknevis.fix("كتاب هاي من")                 <span class="c"># 'کتاب‌های من'</span>
 paknevis.fix(md_text, syntax="markdown")    <span class="c"># code, links, HTML untouched</span>
@@ -230,14 +230,14 @@ paknevis.fix(text, digits="latin", disable=["kashida"])
 
 for d in paknevis.lint("علي مي رود"):
     print(d.code, d.rule, d.line, d.column, d.message, d.replacement)</pre></div>
-          <div class="ev-pane" id="ev-pc" hidden><button class="ghost small cp" type="button" data-cp="ev-pc">Copy</button><pre><span class="c"># .pre-commit-config.yaml</span>
+          <div class="ev-pane" id="ev-pc" hidden><button class="ghost small cp" type="button" data-cp="ev-pc">Copy</button><pre tabindex="0"><span class="c"># .pre-commit-config.yaml</span>
 repos:
   - repo: https://github.com/mrzroot/paknevis
     rev: v0.1.0
     hooks:
       - id: paknevis          <span class="c"># fixes files</span>
       <span class="c"># - id: paknevis-check  # report only</span></pre></div>
-          <div class="ev-pane" id="ev-gh" hidden><button class="ghost small cp" type="button" data-cp="ev-gh">Copy</button><pre>- uses: actions/checkout@v4
+          <div class="ev-pane" id="ev-gh" hidden><button class="ghost small cp" type="button" data-cp="ev-gh">Copy</button><pre tabindex="0">- uses: actions/checkout@v4
 - uses: mrzroot/paknevis@v0.1.0
   with:
     paths: docs/ README.md
