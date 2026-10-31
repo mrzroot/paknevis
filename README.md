@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/favicon.svg" width="88" height="88" alt="paknevis logo">
+<img src="docs/assets/banner.svg" alt="paknevis (پاک‌نویس): Persian text linter and auto-fixer" width="100%">
 
 # پاک‌نویس · paknevis
 
