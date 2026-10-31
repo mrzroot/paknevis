@@ -46,7 +46,9 @@ html[data-theme] .ev-pane pre .c{color:var(--muted)}
 html[data-theme] .status[data-state="ready"] .dot{background:#b5421f;box-shadow:0 0 0 4px rgba(181,66,31,.18)}
 html[data-theme=light] mark.issue .ws{opacity:1}
 </style>
-<link rel="preload" href="fonts/abril-fatface-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="identity.css"></head>
+<link rel="preload" href="fonts/abril-fatface-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="identity.css"><link rel="stylesheet" href="mx.css">
+<style id="mx-tokens">:root{--mx-acc:var(--accent);--mx-on-acc:#fff;--mx-fg:var(--text);--mx-mut:var(--muted);--mx-card:var(--surface);--mx-line:var(--border)}html[data-theme=dark]{--mx-on-acc:#1a0f08}@media (prefers-color-scheme:dark){html:not([data-theme]){--mx-on-acc:#1a0f08}}.mx-sec>h2{font-family:'Abril Fatface',serif;font-weight:400}</style>
+</head>
 <body>
   <a class="skip" href="#input" data-i18n="skip">پرش به ویرایشگر</a>
   <header class="topbar">
@@ -74,7 +76,10 @@ html[data-theme=light] mark.issue .ws{opacity:1}
   </header>
 
   <main>
-    <section class="controls" aria-label="Options">
+    
+<!-- mx: one-sentence "what is it" -->
+<section class="mx mx-sec mx-one" aria-label="What it is"><span class="mx-kick"><span lang="en">In one sentence</span><span lang="fa">در یک جمله</span></span><p lang="en">paknevis is <mark>a careful copy editor for Persian text</mark>: it fixes half-spaces, Arabic ي and ك, digits and punctuation, and leaves code, links and markup alone.</p><p lang="fa" dir="rtl">پاک‌نویس <mark>یک ویراستار دقیق برای متن فارسی است</mark>: نیم‌فاصله‌ها، «ي» و «ك» عربی، رقم‌ها و نشانه‌گذاری را درست می‌کند و به کد، پیوندها و برچسب‌ها دست نمی‌زند.</p></section>
+<section class="controls" aria-label="Options">
       <div class="status" id="status" data-state="idle" role="status" aria-live="polite">
         <span class="dot"></span><span id="status-text" data-i18n="status.idle">در انتظار بارگذاری موتور…</span>
       </div>
@@ -156,6 +161,9 @@ paknevis check docs/          # report
 paknevis fix --diff thesis.tex  # preview fixes</code></pre>
     </section>
 
+
+    <!-- mx: how it works -->
+    <section class="mx mx-sec" id="how" aria-labelledby="mx-how-h"><span class="mx-kick"><span lang="en">How it works</span><span lang="fa">چطور کار می‌کند</span></span><h2 id="mx-how-h"><span lang="en">From messy to clean in four steps</span><span lang="fa">از نامرتب تا پاک‌نویس در چهار گام</span></h2><ol class="mx-flow mx-steps"><li><h3><span lang="en">Paste or point it at files</span><span lang="fa">متن بدهید یا فایل‌ها را نشان دهید</span></h3><p><span lang="en">Plain text, Markdown, HTML or LaTeX, in the editor above, the CLI or Python.</span><span lang="fa">متن ساده، مارک‌داون، HTML یا LaTeX؛ در ویرایشگر بالا، خط فرمان یا پایتون.</span></p></li><li><h3><span lang="en">It protects what is not prose</span><span lang="fa">هرچه نوشته نیست کنار می‌رود</span></h3><p><span lang="en">Code, URLs, e-mails, tags, math and LaTeX commands are fenced off and never changed.</span><span lang="fa">کد، نشانی‌ها، ایمیل، تگ‌ها، فرمول و دستورهای LaTeX جدا می‌شوند و هرگز عوض نمی‌شوند.</span></p></li><li><h3><span lang="en">25 rules read the rest</span><span lang="fa">۲۵ قاعده بقیه را می‌خوانند</span></h3><p><span lang="en">Half-spaces (می‌روم, کتاب‌ها), Arabic ي/ك, digits, punctuation, spacing, quotes and common misspellings.</span><span lang="fa">نیم‌فاصله (می‌روم، کتاب‌ها)، ي/ك عربی، رقم‌ها، نشانه‌گذاری، فاصله‌ها، گیومه و غلط‌های رایج.</span></p></li><li><h3><span lang="en">You review, then keep</span><span lang="fa">بازبینی می‌کنید و نگه می‌دارید</span></h3><p><span lang="en">See every change with a rule id and a reason, or use <code>--diff</code> / <code>--check</code> in CI before anything is written.</span><span lang="fa">هر تغییر را با شناسهٔ قاعده و دلیلش می‌بینید؛ یا در CI با <code dir="ltr">--diff</code> یا <code dir="ltr">--check</code> پیش از نوشتن بررسی می‌کنید.</span></p></li></ol></section>
     <section class="lx" id="why" aria-labelledby="why-h">
       <div class="lx-head">
         <span class="lx-eyebrow"><span data-l="fa">چرا پاک‌نویس</span><span data-l="en">Why paknevis</span></span>
@@ -259,7 +267,10 @@ repos:
       <details><summary><span data-l="fa">مجوز؟</span><span data-l="en">License?</span></summary><p><span data-l="fa">MIT. قلم وزیرمتن با مجوز SIL OFL 1.1 در همین صفحه میزبانی می‌شود.</span><span data-l="en">MIT. The Vazirmatn font is self-hosted on this page under the SIL OFL 1.1.</span></p></details>
     </section>
 
-    <section class="lx-cta">
+    
+<!-- mx: latest release (real tag; refreshed from the GitHub API when online) -->
+<section class="mx mx-sec" id="release" aria-labelledby="mx-rel-h"><span class="mx-kick"><span class="mx-live" aria-hidden="true"></span><span lang="en">Latest release</span><span lang="fa">آخرین نسخه</span></span><h2 id="mx-rel-h"><span lang="en">Ready to install</span><span lang="fa">آمادهٔ نصب</span></h2><div class="mx-rel" data-repo="paknevis" data-mx><div class="mx-ver" data-mx-ver>v0.1.0</div><div class="mx-meta"><span lang="en">Published <b data-mx-date data-iso="2026-10-08T10:09:00Z" lang="en">2026-10-08</b>. Includes Python wheel and source archive.</span><span lang="fa">منتشرشده در <b data-mx-date data-iso="2026-10-08T10:09:00Z" lang="fa">2026-10-08</b>. شامل فایل wheel پایتون و آرشیو سورس.</span></div><div class="mx-btns"><a class="mx-btn p" data-mx-link href="https://github.com/mrzroot/paknevis/releases/tag/v0.1.0"><span lang="en">Release notes</span><span lang="fa">یادداشت انتشار</span></a><a class="mx-btn" href="https://github.com/mrzroot/paknevis/blob/main/CHANGELOG.md"><span lang="en">Changelog</span><span lang="fa">تغییرات</span></a><a class="mx-btn" href="https://github.com/mrzroot/paknevis/releases"><span lang="en">All releases</span><span lang="fa">همهٔ نسخه‌ها</span></a></div></div></section>
+<section class="lx-cta">
       <h2><span data-l="fa">نوشتهٔ فارسی‌تان را پاک‌نویس کنید.</span><span data-l="en">Give your Persian writing a clean copy.</span></h2>
       <div class="row"><a class="ghost btn-p" href="#input"><span data-l="fa">امتحان در ویرایشگر</span><span data-l="en">Try it in the editor</span></a><a class="ghost" href="https://github.com/mrzroot/paknevis">GitHub</a><a class="ghost" href="https://github.com/mrzroot/paknevis/releases"><span data-l="fa">انتشارها</span><span data-l="en">Releases</span></a></div>
       <p class="top-links"><a href="https://mrzroot.github.io/"><span data-l="fa">صفحهٔ سازنده</span><span data-l="en">Author's site</span></a> · <a href="https://mrzroot.github.io/projects/"><span data-l="fa">پروژه‌های دیگر</span><span data-l="en">More projects</span></a></p>
@@ -310,5 +321,6 @@ window.addEventListener('storage',function(e){if(e.key===K||e.key===null)apply(g
 window.addEventListener('pageshow',function(e){if(e.persisted)apply(get(),false)});
 if(window.MutationObserver)new MutationObserver(sync).observe(d,{attributes:true,attributeFilter:['data-lang','lang']});
 /* normalise whatever the boot script set */apply(get(),false)})();</script>
-<script src="fx.js" defer></script></body>
+<script src="fx.js" defer></script><script src="mx.js" defer></script>
+</body>
 </html>
