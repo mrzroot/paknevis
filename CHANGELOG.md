@@ -6,6 +6,8 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+- Docs: Preview fixes without rewriting files.
+
 ## [0.1.0] - 2026-10-08
 
 First public release.

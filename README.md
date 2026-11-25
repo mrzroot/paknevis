@@ -24,6 +24,8 @@ safe for Markdown, HTML and LaTeX (XePersian).
 
 ### ⚡ Quickstart
 
+**Preview fixes without rewriting files.** Use a diff to review changes. In CI, check-only mode fails if a fix would change a file.
+
 ```bash
 pip install git+https://github.com/mrzroot/paknevis
 paknevis check docs/      # report issues

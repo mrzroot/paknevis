@@ -275,7 +275,10 @@ repos:
       <div class="row"><a class="ghost btn-p" href="#input"><span data-l="fa">امتحان در ویرایشگر</span><span data-l="en">Try it in the editor</span></a><a class="ghost" href="https://github.com/mrzroot/paknevis">GitHub</a><a class="ghost" href="https://github.com/mrzroot/paknevis/releases"><span data-l="fa">انتشارها</span><span data-l="en">Releases</span></a></div>
       <p class="top-links"><a href="https://mrzroot.github.io/"><span data-l="fa">صفحهٔ سازنده</span><span data-l="en">Author's site</span></a> · <a href="https://mrzroot.github.io/projects/"><span data-l="fa">پروژه‌های دیگر</span><span data-l="en">More projects</span></a></p>
     </section>
-  </main>
+  <section id="review-workflow" class="mx mx-sec" aria-labelledby="review-workflow-title" style="max-width:68rem;margin:3rem auto;padding-inline:1rem"><h2 id="review-workflow-title"><span lang="en">Preview fixes without rewriting files</span><span lang="fa" dir="rtl">پیش‌نمایش اصلاح‌ها بدون بازنویسی فایل</span></h2><p lang="en">Use a diff to review changes. In CI, check-only mode fails if a fix would change a file.</p><p lang="fa" dir="rtl">با دیدن تفاوت‌ها اصلاح‌ها را مرور کنید. در CI، اگر فایلی به اصلاح نیاز داشته باشد، حالت بررسی اجرا را ناموفق می‌کند.</p><pre dir="ltr" style="overflow-x:auto;text-align:left"><code>paknevis check docs/
+paknevis fix --diff README.md
+paknevis fix --check .</code></pre></section>
+</main>
 
   <footer>
     <p data-i18n="footer">همه‌چیز در مرورگر شما اجرا می‌شود (Pyodide)؛ متنی به سروری فرستاده نمی‌شود.</p>
