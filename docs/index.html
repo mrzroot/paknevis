@@ -15,7 +15,6 @@
   <meta property="og:image" content="https://mrzroot.github.io/paknevis/assets/screenshot.png">
   <meta property="og:type" content="website">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/Vazirmatn-wght.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/landing.css">
   <link rel="canonical" href="https://mrzroot.github.io/paknevis/">
@@ -46,8 +45,10 @@ html[data-theme] .ev-pane pre .c{color:var(--muted)}
 html[data-theme] .status[data-state="ready"] .dot{background:#b5421f;box-shadow:0 0 0 4px rgba(181,66,31,.18)}
 html[data-theme=light] mark.issue .ws{opacity:1}
 </style>
-<link rel="preload" href="fonts/abril-fatface-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="identity.css"><link rel="stylesheet" href="mx.css">
+<link rel="stylesheet" href="identity.css"><link rel="stylesheet" href="mx.css">
 <style id="mx-tokens">:root{--mx-acc:var(--accent);--mx-on-acc:#fff;--mx-fg:var(--text);--mx-mut:var(--muted);--mx-card:var(--surface);--mx-line:var(--border)}html[data-theme=dark]{--mx-on-acc:#1a0f08}@media (prefers-color-scheme:dark){html:not([data-theme]){--mx-on-acc:#1a0f08}}.mx-sec>h2{font-family:'Abril Fatface',serif;font-weight:400}</style>
+<link rel="preload" href="assets/fonts/Vazirmatn-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="editorial.css">
 </head>
 <body>
   <a class="skip" href="#input" data-i18n="skip">پرش به ویرایشگر</a>
@@ -76,6 +77,18 @@ html[data-theme=light] mark.issue .ws{opacity:1}
   </header>
 
   <main>
+<section class="pk-studio" aria-label="پاک‌نویس / Paknevis">
+ <div class="pk-opening">
+  <p class="pk-label"><span data-l="fa">کارگاه متن فارسی</span><span data-l="en">Persian copy desk</span></p>
+  <h2><span data-l="fa">متن فارسی را تمیز کنید، نه لحن نویسنده را.</span><span data-l="en">Clean up the text. Keep the writer’s voice.</span></h2>
+  <p><span data-l="fa">نیم‌فاصله و شکل حروف را همان‌جا بررسی کنید. پیشنهادها را ببینید و فقط بعد از بازبینی، متن اصلاح‌شده را بردارید.</span><span data-l="en">Check half-spaces and letter forms in the browser. Review the suggestions before copying the cleaned text.</span></p>
+  <a class="pk-button" href="#input"><span data-l="fa">باز کردن ویرایشگر</span><span data-l="en">Open the editor</span></a>
+ </div>
+ <figure class="pk-sample" aria-label="نمونهٔ پیش و پس / Before and after">
+  <div><small><span data-l="fa">قبل</span><span data-l="en">Before</span></small><p lang="fa" dir="rtl">كتاب ها را نگاه <del>مي كنيم</del>.</p></div>
+  <div><small><span data-l="fa">بعد</span><span data-l="en">After</span></small><p lang="fa" dir="rtl">کتاب‌ها را نگاه <ins>می‌کنیم</ins>.</p></div>
+ </figure>
+</section>
     
 <!-- mx: one-sentence "what is it" -->
 <section class="mx mx-sec mx-one" aria-label="What it is"><span class="mx-kick"><span lang="en">In one sentence</span><span lang="fa">در یک جمله</span></span><p lang="en">paknevis is <mark>a careful copy editor for Persian text</mark>: it fixes half-spaces, Arabic ي and ك, digits and punctuation, and leaves code, links and markup alone.</p><p lang="fa" dir="rtl">پاک‌نویس <mark>یک ویراستار دقیق برای متن فارسی است</mark>: نیم‌فاصله‌ها، «ي» و «ك» عربی، رقم‌ها و نشانه‌گذاری را درست می‌کند و به کد، پیوندها و برچسب‌ها دست نمی‌زند.</p></section>
